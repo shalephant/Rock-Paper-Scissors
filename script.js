@@ -18,62 +18,77 @@ function getComputerChoice(){
 }
 
 
-let playerWin;
-let computerWin;
-
+let compWin = false;
+let playerWin = false;
 
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock" && computerSelection == paper) {
+
         console.log("You Lose! Paper beats Rock");
+
+        computerScore++;
+        compWin = true;
         return playerLostRock;
-        playerWin = false;
-        computerWin = true;
-        return computerWin;
-    } else if (playerSelection == "rock" && computerSelection == rock){
-        console.log("It is a Draw");
-        playerWin = false;
-        computerWin = false;
-        return draw;
-    } else if (playerSelection == "rock" && computerSelection == scissors){
-        console.log("You Win! Rock always beats Scissors");
-        return playerWonRock;
-        playerWin = true;
-        computerWin = false;
-        return playerWin;
-    }  else if (playerSelection == "paper" && computerSelection == scissors){
-        console.log("You Lose! Scissors always slice paper");
-        return playerLostPaper;
-        playerWin = false;
-        computerWin = true;
-        return computerWin;
-    } else if (playerSelection == "paper" && computerSelection == rock){
-        console.log("You Win! Paper always beats rock");
         
-        return playerWonPaper;
+    } else if (playerSelection == "rock" && computerSelection == rock){
+
+        console.log("It is a Draw");
+        return draw;
+
+    } else if (playerSelection == "rock" && computerSelection == scissors){
+
+        console.log("You Win! Rock always beats Scissors");
+
+        playerScore++;
         playerWin = true;
-        computerWin = false;
-        return playerWin;
+
+        return playerWonRock;
+
+    }  else if (playerSelection == "paper" && computerSelection == scissors){
+
+        console.log("You Lose! Scissors always slice paper");
+
+        computerScore++;
+        compWin = true;
+        return playerLostPaper;
+
+    } else if (playerSelection == "paper" && computerSelection == rock){
+
+        console.log("You Win! Paper always beats rock");
+
+        playerScore++;
+        playerWin = true;
+        return playerWonPaper;
+
     } else if (playerSelection == "paper" && computerSelection == paper){
+
         console.log("It's a Draw");
-        playerWin = false;
-        computerWin = false;
+        
         return draw;
+
     } else if (playerSelection == "scissors" && computerSelection == rock){
+
         console.log("You Lost! You broke scissors on against rock");
+
+        computerScore++;
+        compWin = true;
         return playerLostScissors;
-        computerWin = true;
-        playerWin = false;
-        return computerWin;
+        
     } else if (playerSelection == "scissors" && computerSelection == scissors){
+
         console.log("What a Draw");
-        playerWin = false;
-        computerWin = false;
+        
         return draw;
+
     } else if (playerSelection == "scissors" && computerSelection == paper){
+
         console.log("You Won! What a slice againt paper!");
+
+        playerScore++;
+        playerWin = true;
         return playerWonScissors;
-        return playerWin;
+        
 
     } 
 }
@@ -89,23 +104,22 @@ let computerSelection = getComputerChoice();
 let playerSelection = "rock";
 let playerScore = 0;
 let computerScore = 0;
+let n = 5;
 
 function game(){
-    for (let i = 0; i<5; i++){
+    for (let i = 0; i< n; i++){
 
         getComputerChoice();
         playerSelection = prompt("What you choose?");
         playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection,computerSelection);
-        if(playerWonPaper || playerWonRock || playerWonScissors){
-            playerScore++;
+        if(playerWin){
             console.log("Player score: " + playerScore);
             console.log("Computer Score: " + computerScore);
-        } else if (computerWin){
-            computerScore++;
+        } else if (compWin){
             console.log("Player score: " + playerScore);
             console.log("Computer Score: " + computerScore);
-        }
+        } 
     }
 }
 game();
