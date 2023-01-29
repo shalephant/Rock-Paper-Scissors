@@ -92,8 +92,10 @@ let computerScore = 0;
 
 function game(){
     for (let i = 0; i<5; i++){
-        playerSelection = prompt("What you choose?");
 
+        getComputerChoice();
+        playerSelection = prompt("What you choose?");
+        playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection,computerSelection);
         if(playerWonPaper || playerWonRock || playerWonScissors){
             playerScore++;
@@ -107,4 +109,5 @@ function game(){
     }
 }
 game();
+
 
