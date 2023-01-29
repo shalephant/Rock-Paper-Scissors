@@ -5,13 +5,10 @@ let scissors = "Scissors";
 function getComputerChoice(){
     let randomNum = Math.random();
     if(randomNum <= 0.33){
-        console.log(rock);
         return rock;
     } else if (randomNum <= 0.66 && randomNum > 0.33) {
-        console.log(paper);
         return paper;
     } else {
-        console.log(scissors);
         return scissors;
     }
 
@@ -104,12 +101,12 @@ let computerSelection = getComputerChoice();
 let playerSelection = "rock";
 let playerScore = 0;
 let computerScore = 0;
-let n = 5;
 
 function game(){
-    for (let i = 0; i< n; i++){
+    for (let i = 0; i<5; i++){
 
-        getComputerChoice();
+        
+        computerSelection = getComputerChoice();
         playerSelection = prompt("What you choose?");
         playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection,computerSelection);
@@ -121,7 +118,15 @@ function game(){
             console.log("Computer Score: " + computerScore);
         } 
     }
+    if(computerScore == playerScore){
+        console.log("Game ended draw");
+    } else if (computerScore > playerScore){
+        console.log("You lost buddy, better luck next time");
+    } else {
+        console.log("What a win, Congrats");
+    }
 }
+
 game();
 
 
