@@ -103,29 +103,6 @@ let playerWonScissors = "You won with scissors";
 let computerSelection = getComputerChoice();
 let playerSelection;
 
-function game(){
-    
-
-        
-        computerSelection = getComputerChoice();
-        playerSelection = prompt("What you choose?");
-        playerSelection = playerSelection.toLowerCase();
-        playRound(playerSelection,computerSelection);
-        if(playerWin){
-            console.log("Player score: " + playerScore);
-            console.log("Computer Score: " + computerScore);
-        } else if (compWin){
-            console.log("Player score: " + playerScore);
-            console.log("Computer Score: " + computerScore);
-        } 
-    }
-    if(computerScore == playerScore){
-        console.log("Game ended draw");
-    } else if (computerScore > playerScore){
-        console.log("You lost buddy, better luck next time");
-    } else {
-        console.log("What a win, Congrats");
-    }
 
 
 const container = document.querySelector('div');
